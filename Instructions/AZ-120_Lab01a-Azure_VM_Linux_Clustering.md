@@ -647,13 +647,25 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
 1. From the **az12001a-vm0** blade, navigate to the **az12001a-vm0 \| Networking** blade and, on the **az12001a-vm0 \| Networking** blade, select the entry representing the public IP address **az12001a-vm0-ip** associated with its network adapter.
 
+    ![](images/ex3-task1-step2.png)
+
 1. On the **az12001a-vm0-ip** blade, select **Dissociate** to disconnect the public IP address from the network interface and then select **Delete** to delete it.
+
+    ![](images/ex3-task1-step3.png)
+
+    ![](images/ex3-task1-step3.1.png)
 
 1. In the Azure portal, navigate to the blade of the **az12001a-vm1** Azure VM.
 
 1. From the **az12001a-vm1** blade, navigate to the **az12001a-vm1 \| Networking** blade and, on the **az12001a-vm1 \| Networking** blade, select the entry representing the public IP address **az12001a-vm1-ip** associated with its network adapter.
 
+    ![](images/ex3-task1-step5.png)
+
 1. On the **az12001a-vm1-ip** blade, select **Dissociate** to disconnect the public IP address from the network interface and then select **Delete** to delete it.
+
+    ![](images/ex3-task1-step6.png)
+
+    ![](images/ex3-task1-step6.1.png)
 
 1. In the Azure portal, navigate to the blade of the **az12001a-vm0** Azure VM.
 
@@ -661,20 +673,31 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
 1. From the **az12001a-vm0 \| Networking** blade, select the entry representing the network interface of the az12001a-vm0. 
 
+    ![](images/ex3-task1-step9.png)
+
 1. From the blade of the network interface of the az12001a-vm0, navigate to its IP configurations blade and, from there, display its **ipconfig1** blade.
 
+    ![](images/ex3-task1-step10.png)
+
 1. On the **ipconfig1** blade, set the private IP address assignment to **Static** and save the change.
+
+    ![](images/ex3-task1-step11.png)
 
 1. In the Azure portal, navigate to the blade of the **az12001a-vm1** Azure VM.
 
 1. From the **az12001a-vm1** blade, navigate to the **az12001a-vm1 \| Networking** blade. 
 
-1. From the **az12001a-vm1 \| Networking** blade, navigate to the network interface of the az12001a-vm1. 
+1. From the **az12001a-vm1 \| Networking** blade, navigate to the network interface of the az12001a-vm1.
+
+    ![](images/ex3-task1-step14.png)
 
 1. From the blade of the network interface of the az12001a-vm1, navigate to its IP configurations blade and, from there, display its **ipconfig1** blade.
 
+    ![](images/ex3-task1-step15.png)
+
 1. On the **ipconfig1** blade, set the private IP address assignment to **Static** and save the change.
 
+    ![](images/ex3-task1-step16.png)
 
 ### Task 2: Create and configure Azure Load Balancers handling inbound traffic
 
@@ -704,6 +727,8 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
    - Availability zone: **Zone redundant**
 
+    ![](images/ex3-task2-step2.png)
+
 1. On the **Review + create** blade, select **Create**.
 
    > **Note**: Wait until the load balancer is provisioned. This shoudl take less than a minute. 
@@ -720,6 +745,10 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
    - Virtual machine: **az12001a-vm1**  IP Configuration: **ipconfig1  (192.168.0.5)**
 
+    ![](images/ex3-task2-step5.png)
+
+    ![](images/ex3-task2-step5.1.png)
+
 1. On the **az12001a-lb0** blade, select **Health probes** select **+ Add**, and, on the **Add health probe** blade, specify the following settings (leave others with their defaults):
 
    - Name: **az12001a-lb0-hprobe**
@@ -731,6 +760,10 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
    - Interval: **5** *seconds*
 
    - Unhealthy threshold: **2** *consecutive failures*
+
+    ![](images/ex3-task2-step6.png)
+
+    ![](images/ex3-task2-step6.1.png)
 
 1. On the **az12001a-lb0** blade, select **Load balancing rules**, select **+ Add**, and, on the **Add load balancing rule** blade, specify the following settings (leave others with their defaults):
 
@@ -748,11 +781,11 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
    - Session persistence: **None**
 
-   - Idle timeout (minutes): **4**
-
-   - TCP reset: **Disabled**
-
    - Floating IP (direct server return): **Enabled**
+
+    ![](images/ex3-task2-step7.png)
+
+    ![](images/ex3-task2-step7.1.png)
 
 ### Task 3: Create and configure Azure Load Balancers handling outbound traffic
 

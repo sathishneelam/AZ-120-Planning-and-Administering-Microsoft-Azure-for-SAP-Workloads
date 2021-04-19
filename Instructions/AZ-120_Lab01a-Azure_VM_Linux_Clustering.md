@@ -877,6 +877,8 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
    - Would you like to use an existing Windows Server license?: **No**
 
+    ![](images/ex3-task4-step2.png)
+
 1. On the **Disks** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Networking >** (leave all other settings with their default value):
 
    - OS disk type: **Standard HDD**
@@ -901,6 +903,8 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
    - Place this virtual machine behind an existing load balancing solutions: **No**
 
+    ![](images/ex3-task4-step4.png)
+
 1. On the **Management** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Advanced >** (leave all other settings with their default value):
 
    - Enable basic plan for free: **No**
@@ -918,6 +922,8 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
    - Enable backup: **Off**
 
    - Guest OS updates: **Manual patching: Install patches yourself or through a different patching solution**
+
+    ![](images/ex3-task4-step5.png)
 
 1. On the **Advanced** tab of the **Create a virtual machine** blade, select **Review + create** (leave all other settings with their default value):
 

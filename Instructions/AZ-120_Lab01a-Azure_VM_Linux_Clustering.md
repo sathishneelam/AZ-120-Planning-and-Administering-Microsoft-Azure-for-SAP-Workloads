@@ -55,6 +55,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
    - Proximity placement group name: **az12001a-ppg**
 
+    ![](images/task1-step4.png)
+
 1. On the **Review + create** tab of the **Create Proximity Placement Groups** blade, select **Create**.
 
    > **Note**: Wait for the provisioning to complete. This should take less than a minute.
@@ -89,6 +91,9 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
    - Password: **Pa55w.rd1234**
 
+
+    ![](images/task1-step7.png)
+
 1. On the **Disks** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Networking >** (leave all other settings with their default value):
 
    - OS disk type: **Premium SSD**
@@ -115,6 +120,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
    - Place this virtual machine behind an existing load balancing solutions: **No**
 
+    ![](images/task1-step9.png)
+
 1. On the **Management** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Advanced >** (leave all other settings with their default value):
 
    - Enable basic plan for free: **No**
@@ -132,6 +139,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 1. On the **Advanced** tab of the **Create a virtual machine** blade, specify the following settings and select **Review + create** (leave all other settings with their default value):
 
    - Proximity placement group: **az12001a-ppg**
+
+    ![](images/task1-step11.png)
 
 1. On the **Review + create** tab of the **Create Proximity Placement Groups** blade, select **Create**.
 
@@ -167,6 +176,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
    - Password: **Pa55w.rd1234**
 
+    ![](images/task1-step14.png)
+
 1. On the **Disks** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Networking >** (leave all other settings with their default value):
 
    - OS disk type: **Premium SSD**
@@ -188,6 +199,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
    - Accelerated networking: **On**
 
    - Place this virtual machine behind an existing load balancing solutions: **No**
+
+    ![](images/task1-step16.png)
 
 1. On the **Management** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Advanced >** (leave all other settings with their default value):
 
@@ -211,6 +224,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
    > **Note**: Wait for the provisioning to complete. This should take less about 3 minutes.
 
+    ![](images/task1-step11.png)
 
 ### Task 2: Create and configure Azure VMs disks
 
@@ -251,6 +265,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
    - Resource group: *the name of the resource group you used earlier in this task*
 
    - HOST CACHING: **Read-only**
+
+    ![](images/task2-step7.png)
 
 1. Repeat the previous step to attach the remaining 7 disks with the prefix **az12001a-vm0-DataDisk** (for the total of 8). Assign the LUN number matching the last character of the disk name. Set HOST CACHING of the disk with LUN **1** to **Read-only** and, for all the remaining ones, set HOST CACHING to **None**.
 

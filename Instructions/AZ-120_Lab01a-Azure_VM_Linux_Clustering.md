@@ -787,63 +787,7 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
     ![](images/ex3-task2-step7.1.png)
 
-### Task 3: Create and configure Azure Load Balancers handling outbound traffic
-
-1. In the Azure Portal, start a Bash session in Cloud Shell. 
-
-1. In the Cloud Shell pane, run the following command to set the value of the variable `RESOURCE_GROUP_NAME` to the name of the resource group containing the resources you provisioned in the first exercise of this lab:
-
-   ```cli
-   RESOURCE_GROUP_NAME='az12001a-RG'
-   ```
-
-1. In the Cloud Shell pane, run the following command to create the public IP address to be used by the second load balancer:
-
-   ```cli
-   LOCATION=$(az group list --query "[?name == '$RESOURCE_GROUP_NAME'].location" --output tsv)
-
-   PIP_NAME='az12001a-lb1-pip'
-
-   az network public-ip create --resource-group $RESOURCE_GROUP_NAME --name $PIP_NAME --sku Standard --location $LOCATION
-   ```
-
-1. In the Cloud Shell pane, run the following command to create the second load balancer:
-
-   ```cli
-   LB_NAME='az12001a-lb1'
-
-   LB_BE_POOL_NAME='az12001a-lb1-bepool'
-
-   LB_FE_IP_NAME='az12001a-lb1-fe'
-
-   az network lb create --resource-group $RESOURCE_GROUP_NAME --name $LB_NAME --sku Standard --backend-pool-name $LB_BE_POOL_NAME --frontend-ip-name $LB_FE_IP_NAME --location $LOCATION --public-ip-address $PIP_NAME
-   ```
-
-1. In the Cloud Shell pane, run the following command to create the outbound rule of the second load balancer:
-
-   ```cli
-   LB_RULE_OUTBOUND='az12001a-lb1-ruleoutbound'
-
-   az network lb outbound-rule create --resource-group $RESOURCE_GROUP_NAME --lb-name $LB_NAME --name $LB_RULE_OUTBOUND --frontend-ip-configs $LB_FE_IP_NAME --protocol All --idle-timeout 4 --outbound-ports 1000 --address-pool $LB_BE_POOL_NAME
-   ```
-
-1. Close the Cloud Shell pane.
-
-1. In the Azure portal, navigate to the blade displaying the properties of the newly created Azure Load Balancer **az12001a-lb1**.
-
-1. On the **az12001a-lb1** blade, click **Backend pools**.
-
-1. On the **az12001a-lb1 \| Backend pools** blade, click **az12001a-lb1-bepool**.
-
-1. On the **az12001a-lb1-bepool** blade, specify the following settings and click **Save**:
-
-   - Virtual network: **az12001a-rg-vnet (2 VM)**
-
-   - Virtual machine: **az12001a-vm0**  IP Configuration: **ipconfig1 (192.168.0.4)**
-
-   - Virtual machine: **az12001a-vm1**  IP Configuration: **ipconfig1 (192.168.0.5)**
-
-### Task 4: Deploy a jump host
+### Task 3: Deploy a jump host
 
    > **Note**: Since two clustered Azure VMs are no longer directly accessible from Internet, you will deploy an Azure VM running Windows Server 2019 Datacenter that will serve as a jump host. 
 

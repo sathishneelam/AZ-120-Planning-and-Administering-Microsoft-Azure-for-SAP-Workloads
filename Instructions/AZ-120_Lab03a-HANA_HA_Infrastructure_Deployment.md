@@ -146,6 +146,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   _artifacts Location Sas Token: *leave blank*
 
+    ![](images/module3-ex1-task1-step5.png)
+
 1.  Do not wait for the deployment to complete but instead proceed to the next task. 
 
     > **Note**: If the deployment fails with the **Conflict** error message during deployment of the CustomScriptExtension component, use the following steps  to remediate this issue:
@@ -181,7 +183,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Size: **Standard DS1 v2*** or similar*
 
-    -   Username: **Student**
+    -   Username: **student**
 
     -   Password: **Pa55w.rd1234**
 

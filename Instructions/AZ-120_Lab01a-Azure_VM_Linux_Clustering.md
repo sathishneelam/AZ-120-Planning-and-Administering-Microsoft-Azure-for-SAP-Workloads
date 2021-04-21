@@ -811,7 +811,7 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
    - Azure Spot Instance: **No**
 
-   - Username: **Student**
+   - Username: **student**
 
    - Password: **Pa55w.rd1234**
 

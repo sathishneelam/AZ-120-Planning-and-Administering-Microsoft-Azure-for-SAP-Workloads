@@ -49,6 +49,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
 1.  Back on the **Custom deployment** blade, in the **Load a GitHub quickstart template** drop-down list, select the entry **active-directory-new-domain-ha-2-dc**, and click **Select template**.
 
+    ![](images/module2-ex1-task1-step5.png)
+
     > **Note**: Alternatively, you can launch the deployment by navigating to Azure Quickstart Templates page at <https://github.com/Azure/azure-quickstart-templates>, locating the template named **Create 2 new Windows VMs, create a new AD Forest, Domain, and 2 DCs in an availability set**, and initiating its deployment by clicking **Deploy to Azure** button.
 
 1.  On the **Custom deployment** blade, click **Edit template**.
@@ -69,7 +71,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     > **Note**: Consider using **East US** or **East US2** regions for deployment of your resources. 
 
-    -   Admin Username: **Student**
+    -   Admin Username: **student**
 
     -   Password: **Pa55w.rd1234**
 
@@ -89,13 +91,15 @@ In this exercise, you will deploy Azure infrastructure compute components necess
     
     -   Ad VM Size: **Standard_D4s_v3**
 
+    ![](images/module2-ex1-task1-step8.png)
+
     > **Note**: The deployment should take about 35 minutes. Wait for the deployment to complete before you proceed to the next task.
 
 ### Task 2: Deploy a pair of Azure VMs running Windows Server 2016 in the same availability set.
 
-1.  From the lab computer, in the Azure portal, click **+ Create a resource**.
+1. From the lab computer, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Virtual machines** blade, then, on the **Virtual machines** blade, select **+ Add** and, in the drop-down menu, select **Virtual machine**.
 
-1.  From the **New** blade, initiate provisioning of a **Windows Server 2019 Datacenter** Azure VM with the following settings:
+1. On the **Basics** tab of the **Create a virtual machine** blade, specify the following settings and select **Next: Disks >** (leave all other settings with their default value):
 
     -   Subscription: *the name of your Azure subscription*
 
@@ -123,7 +127,11 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   You already have a Windows license?: **No**
 
+    ![](images/module2-ex1-task2-step2.png)
+
     -   OS disk type: **Premium SSD**
+
+    ![](images/module2-ex1-task2-step2.1.png)
 
     -   Virtual network: **adVNET**
 
@@ -143,9 +151,9 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Place this virtual machine behind an existing load balancing solutions: **No**
 
-    -   Enable basic plan for free: **No**
+    ![](images/module2-ex1-task2-step2.2.png)
 
-    -   Boot diagnostics: **Off**
+    -   Boot diagnostics: **Disable**
 
     -   OS guest diagnostics: **Off**
 
@@ -155,11 +163,11 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Enable auto-shutdown: **Off**
 
-    -   Enable backup: **Off**
-
     -   Extensions: *None*
 
     -   Tags: *None*
+
+    ![](images/module2-ex1-task2-step2.3.png)
 
 1.  Do not wait for the provisioning to complete but continue to the next step.
 
@@ -167,7 +175,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Subscription: *the name of your Azure subscription*
 
-    -   Resource group: *the name of the resource group you used when deploying the first **Windows Server 2019 Datacenter** Azure VM in this task*
+    -   Resource group: *the name of a new resource group* **az12001b-cl-RG**
 
     -   Virtual machine name: **az12001b-cl-vm1**
 
@@ -181,7 +189,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Size: **Standard D4s v3**
 
-    -   Username: **Student**
+    -   Username: **student**
 
     -   Password: **Pa55w.rd1234**
 
@@ -209,9 +217,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Place this virtual machine behind an existing load balancing solutions: **No**
 
-    -   Enable basic plan for free: **No**
-
-    -   Boot diagnostics: **Off**
+    -   Boot diagnostics: **Disable**
 
     -   OS guest diagnostics: **Off**
 
@@ -261,6 +267,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
 1.  From the **az12001b-cl-vm0** blade, navigate to the **az12001b-cl-vm0 - Disks** blade.
 
+    ![](images/module2-ex1-task2-step6.png)
+
 1.  From the **az12001b-cl-vm0 - Disks** blade, attach data disks with the following settings to az12001b-cl-vm0:
 
     -   LUN: **0**
@@ -272,6 +280,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
     -   HOST CACHING: **Read-only**
 
 1.  Repeat the previous step to attach the remaining 3 disks with the prefix **az12001b-cl-vm0-DataDisk** (for the total of 4). Assign the LUN number matching the last character of the disk name. For the last disk (LUN **4**), set HOST CACHING to **None**.
+
+    ![](images/module2-ex1-task2-step7.png)
 
 1.  Save your changes. 
 
@@ -290,6 +300,8 @@ In this exercise, you will deploy Azure infrastructure compute components necess
     -   HOST CACHING: **Read-only**
 
 1.  Repeat the previous step to attach the remaining 3 disks with the prefix **az12001b-cl-vm1-DataDisk** (for the total of 4). Assign the LUN number matching the last character of the disk name. For the last disk (LUN **4**), set HOST CACHING to **None**.
+
+    ![](images/module2-ex1-task2-step13.png)
 
 1.  Save your changes. 
 
@@ -321,7 +333,7 @@ Duration: 40 minutes
     ```
     $location = (Get-AzureRmResourceGroup -Name $resourceGroupName).Location
 
-    $settingString = '{"Name": "adatum.com", "User": "adatum.com\\Student", "Restart": "true", "Options": "3"}'
+    $settingString = '{"Name": "adatum.com", "User": "adatum.com\\student", "Restart": "true", "Options": "3"}'
 
     $protectedSettingString = '{"Password": "Pa55w.rd1234"}'
 
@@ -339,7 +351,7 @@ Duration: 40 minutes
 
 1.  From the **az12001b-cl-vm0** blade, connect to the virtual machine guest operating system by using Remote Desktop. When prompted to authenticate, provide the following credentials:
 
-    -   User name: **ADATUM\Student**
+    -   User name: **ADATUM\student**
 
     -   Password: **Pa55w.rd1234**
 
@@ -461,7 +473,7 @@ Duration: 40 minutes
 
 1.  From the **az12001b-cl-vm0** blade, connect to the virtual machine guest operating system by using Remote Desktop. When prompted to authenticate, provide the following credentials:
 
-    -   User name: **ADATUM\\Student**
+    -   User name: **ADATUM\\student**
 
     -   Password: **Pa55w.rd1234**
 

@@ -73,7 +73,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Admin Username: **student**
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
     -   Domain Name: **adatum.com**
 
@@ -117,7 +117,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Size: **Standard D4s v3**
 
-    -   Username: **Student**
+    -   Username: **student**
 
     -   Password: **Pa55w.rd1234**
 
@@ -335,7 +335,7 @@ Duration: 40 minutes
 
     $settingString = '{"Name": "adatum.com", "User": "adatum.com\\student", "Restart": "true", "Options": "3"}'
 
-    $protectedSettingString = '{"Password": "Pa55w.rd1234"}'
+    $protectedSettingString = '{"Password": "/Gx^zW(_m34h"}'
 
     $vmNames = @('az12001b-cl-vm0','az12001b-cl-vm1')
 
@@ -353,7 +353,7 @@ Duration: 40 minutes
 
     -   User name: **ADATUM\student**
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
 1.  Within the RDP session to az12001b-cl-vm0, in Server Manager, navigate to the **Local Server** view and turn off temporarily **IE Enhanced Security Configuration**.
 
@@ -475,7 +475,7 @@ Duration: 40 minutes
 
     -   User name: **ADATUM\\student**
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
 1.  Within the RDP session to az12001b-cl-vm0, from the **Tools** menu in Server Manager, start **Active Directory Administrative Center**.
 

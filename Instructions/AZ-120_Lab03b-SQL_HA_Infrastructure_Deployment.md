@@ -60,11 +60,11 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     > **Note**: Consider using **East US** or **East US2** regions for deployment of your resources. 
 
-    -   Admin Username: **Student**
+    -   Admin Username: **student**
 
     -   Location: *the same Azure region you specified above*
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
     -   Domain Name: **adatum.com**
 
@@ -174,7 +174,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   System Availability: **HA**
 
-    -   Admin Username: **Student**
+    -   Admin Username: **student**
 
     -   Authentication Type: **password**
 
@@ -228,7 +228,7 @@ In this task, you will deploy the scale-out file server (SOFS) cluster that will
 
     -   Existing Domain Name: **adatum.com**
 
-    -   Admin Username: **Student**
+    -   Admin Username: **student**
 
     -   Admin Password: **Pa55w.rd1234**
 
@@ -284,7 +284,7 @@ In this task, you will deploy the scale-out file server (SOFS) cluster that will
 
     -   Size: **Standard DS1 v2**
 
-    -   Username: **Student**
+    -   Username: **student**
 
     -   Password: **Pa55w.rd1234**
 
@@ -360,9 +360,9 @@ In this exercise, you will configure operating system of Azure VMs running Windo
     ```
     $location = (Get-AzResourceGroup -Name $resourceGroupName).Location
 
-    $settingString = '{"Name": "adatum.com", "User": "adatum.com\\Student", "Restart": "true", "Options": "3"}'
+    $settingString = '{"Name": "adatum.com", "User": "adatum.com\\student", "Restart": "true", "Options": "3"}'
 
-    $protectedSettingString = '{"Password": "Pa55w.rd1234"}'
+    $protectedSettingString = '{"Password": "/Gx^zW(_m34h"}'
 
     $vmNames = @('i20-ascs-0','i20-ascs-1','i20-db-0','i20-db-1','i20-di-0','i20-di-1')
 
@@ -383,7 +383,7 @@ In this exercise, you will configure operating system of Azure VMs running Windo
 
     -   Login as: **ADATUM\\Student**
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
 1.  Use Remote Desktop to connect to **i20-db-1.adatum.com** Azure VM with the same credentials.
 
@@ -441,7 +441,7 @@ In this exercise, you will configure operating system of Azure VMs running Windo
 
     -   Login as: **ADATUM\\Student**
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
 1.  Within the RDP session to i20-db-0.adatum.com, in Server Manager, navigate to the **Local Server** view and turn off **IE Enhanced Security Configuration**.
 
@@ -522,7 +522,7 @@ In this exercise, you will configure operating system of Azure VMs running Windo
 
     -   Login as: **ADATUM\\Student**
 
-    -   Password: **Pa55w.rd1234**
+    -   Password: **/Gx^zW(_m34h**
 
 1.  Within the RDP session to i20-ascs-0.adatum.com, in Server Manager, navigate to the **Local Server** view and turn off **IE Enhanced Security Configuration**.
 

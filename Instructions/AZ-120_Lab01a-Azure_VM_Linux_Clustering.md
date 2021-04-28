@@ -51,7 +51,7 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
    > **Note**: Consider using **East US** or **East US2** regions for deployment of your resources. 
 
-   - Region: *an Azure region where you can deploy Azure VMs*
+   - Region: **[resourceGroup().location]**
 
    - Proximity placement group name: **az12001a-ppg**
 

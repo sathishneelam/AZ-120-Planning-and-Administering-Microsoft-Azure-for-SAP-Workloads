@@ -69,8 +69,6 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     -   Location: *an Azure region where you can deploy Azure VMs*
 
-    > **Note**: Consider using **East US** or **East US2** regions for deployment of your resources. 
-
     -   Admin Username: **student**
 
     -   Password: **/Gx^zW(_m34h**

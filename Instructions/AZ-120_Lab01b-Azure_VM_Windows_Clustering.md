@@ -93,7 +93,15 @@ In this exercise, you will deploy Azure infrastructure compute components necess
 
     > **Note**: The deployment should take about 35 minutes. Wait for the deployment to complete before you proceed to the next task.
 
-### Task 2: Deploy a pair of Azure VMs running Windows Server 2016 in the same availability set.
+    If the deployment fails with the **Conflict** error message during deployment of the CustomScriptExtension component, use the following steps  to remediate this issue:
+
+       - in the Azure portal, on the **Deployment** blade, review the deployment details and identify the VM(s) where the installation of the CustomScriptExtension failed
+
+       - in the Azure portal, navigate to the blade of the VM(s) you identified in the previous step, select **Extensions**, and from the **Extensions** blade, remove the CustomScript extension
+
+       - in the Azure portal, navigate to the **az12001b-ad-RG** resource group blade, select **Deployments**, select the link to the failed deployment, and select **Redeploy**, select the target resource group (**az12003a-sap-RG**) and provide the password for the root account (**/Gx^zW(_m34h**).
+
+### Task 2: Deploy a pair of Azure VMs running Windows Server 2019 in the same availability set.
 
 1. From the lab computer, in the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Virtual machines** blade, then, on the **Virtual machines** blade, select **+ Add** and, in the drop-down menu, select **Virtual machine**.
 
@@ -449,21 +457,21 @@ Duration: 40 minutes
 
     -   Location: *the same Azure region where you deployed the Azure VMs in the previous exercise*
 
-    -   Performance: **Standard**
-
-    -   Account kind: **Storage (general purpose v1)**
+    -   Performance: **Standard: (general purpose v2)**
 
     -   Replication: **Locally-redundant storage (LRS)**
 
-    -   Connectivity method: **Public endpoint (all networks)**
-
     -   Secure transfer required: **Enabled**
 
-    -   Large file shares: **Disabled**
+    -   Access tier: **Hot**
 
-    -   Blob soft delete: **Disabled**
+    -   Enable large file shares: **Disabled**
 
-    -   Hierarchical namespace: **Disabled**
+    -   Connectivity method: **Public endpoint (all networks)**
+
+    -   Enable hierarchical namespace: **Disabled**
+
+    -   Enable soft delete for blobs: **Disabled**
 
 ### Task 4: Configure Failover Clustering on Azure VMs running Windows Server 2019 to support a highly available SAP NetWeaver installation.
 
@@ -558,13 +566,25 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
 1.  From the **az12001b-cl-vm0** blade, navigate to the blade of the public IP address **az12001b-cl-vm0-ip** associated with its network adapter.
 
+    ![](images/module2-ex3-task1-step1.png)
+
 1.  From the **az12001b-cl-vm0-ip** blade, first disassociate the public IP address from the network interface and then delete it.
+
+    ![](images/module2-ex3-task1-step3.png)
+
+    ![](images/module2-ex3-task1-step3.1.png)
 
 1.  In the Azure portal, navigate to the blade of the Azure VM **az12001b-cl-vm1**. 
 
 1.  From the **az12001b-cl-vm1** blade, navigate to the blade of the public IP address **az12001b-cl-vm1-ip** associated with its network adapter.
 
+    ![](images/module2-ex3-task1-step5.png)
+
 1.  From the **az12001b-cl-vm1-ip** blade, first disassociate the public IP address from the network interface and then delete it.
+
+    ![](images/module2-ex3-task1-step6.png)
+
+    ![](images/module2-ex3-task1-step6.1.png)
 
 1.  In the Azure portal, navigate to the blade of the **az12001a-vm0** Azure VM.
 
@@ -572,9 +592,15 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
 1.  From the **az12001a-vm0 - Networking** blade, navigate to the network interface of the az12001a-vm0. 
 
+    ![](images/module2-ex3-task1-step9.png)
+
 1.  From the blade of the network interface of the az12001a-vm0, navigate to its IP configurations blade and, from there, display its **ipconfig1** blade.
 
+    ![](images/module2-ex3-task1-step10.png)
+
 1.  On the **ipconfig1** blade, set the private IP address assignment to **Static** and save the change.
+
+    ![](images/module2-ex3-task1-step11.png)
 
 1.  In the Azure portal, navigate to the blade of the **az12001a-vm1** Azure VM.
 
@@ -582,15 +608,21 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
 1.  From the **az12001a-vm1 - Networking** blade, navigate to the network interface of the az12001a-vm1. 
 
+    ![](images/module2-ex3-task1-step14.png)
+
 1.  From the blade of the network interface of the az12001a-vm1, navigate to its IP configurations blade and, from there, display its **ipconfig1** blade.
+
+    ![](images/module2-ex3-task1-step15.png)
 
 1.  On the **ipconfig1** blade, set the private IP address assignment to **Static** and save the change.
 
+    ![](images/module2-ex3-task1-step16.png)
+
 ### Task 2: Create and configure Azure Load Balancers handling inbound traffic
 
-1.  In the Azure portal, click **+ Create a resource**.
+1.  In the Azure portal, use the **Search resources, services, and docs** text box at the top of the Azure portal page to search for and navigate to the **Load balancers** blade and, on the **Load balancers** blade, select **+ Add**.
 
-1.  From the **New** blade, initiate creation of a new Azure Load Balancer with the following settings:
+1.  From the **Basics** tab of the **Create load balancer** blade, specify the following settings and select **Review + create** (leave others with their default values):
 
     -   Subscription: *the name of your Azure subscription*
 
@@ -612,11 +644,15 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
     -   IP address: **10.0.1.240**
 
-    -   Availability zone: **No Zone**
+    -   Availability zone: **Zone redundant**
+
+    ![](images/module2-ex3-task2-step1.png)
 
 1.  Wait until the load balancer is provisioned and then navigate to its blade in the Azure portal.
 
 1.  From the **az12001b-cl-lb0** blade, add a backend pool with the following settings:
+
+    ![](images/module2-ex3-task2-step4.png)
 
     -   Name: **az12001b-cl-lb0-bepool**
 
@@ -625,6 +661,8 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
     -   VIRTUAL MACHINE: **az12001b-cl-vm0**  IP ADDRESS: **ipconfig1**
 
     -   VIRTUAL MACHINE: **az12001b-cl-vm1**  IP ADDRESS: **ipconfig1**
+
+    ![](images/module2-ex3-task2-step4.1.png)
 
 1.  From the **az12001b-cl-lb0** blade, add a health probe with the following settings:
 
@@ -638,13 +676,17 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
 
     -   Unhealthy threshold: **2** *consecutive failures*
 
+    ![](images/module2-ex3-task2-step5.png)
+
+    ![](images/module2-ex3-task2-step5.1.png)
+
 1.  From the **az12001b-cl-lb0** blade, add a network load balancing rule with the following settings:
 
     -   Name: **az12001b-cl-lb0-lbruletcp1433**
 
     -   IP version: **IPv4**
 
-    -   Frontend IP address: **192.168.0.240 (LoadBalancerFrontEnd)**
+    -   Frontend IP address: **10.0.1.240 (LoadBalancerFrontEnd)**
 
     -   HA Ports: **Disabled**
 
@@ -663,6 +705,10 @@ In this exercise, you will implement Azure Load Balancers to accommodate cluster
     -   Idle timeout (minutes): **4**
 
     -   Floating IP (direct server return): **Enabled**
+
+    ![](images/module2-ex3-task2-step6.png)
+
+    ![](images/module2-ex3-task2-step6.1.png)
 
 ### Task 3: Create and configure Azure Load Balancers handling outbound traffic
 
